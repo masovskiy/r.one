@@ -5,33 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramix - Открытый аниме-хаб</title>
     <style>
+        /* Основные стили */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000000;
+            background-color: #000000; /* Глубокий черный фон */
             color: #ffffff;
-            background-image: url('https://wallpapercave.com/wp/wp13006911.png');
+            background-image: url('https://wallpapercave.com/wp/wp13006911.png'); /* Японское фоновое изображение */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
+        /* Стили для заголовка */
         header {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон для header */
             text-align: center;
             padding: 2rem 0;
-            border-bottom: 3px solid #ff66b2;
+            border-bottom: 3px solid #ff66b2; /* Японско-розовая линия */
         }
 
         h1 {
             font-size: 4rem;
-            color: #ff66b2;
+            color: #ff66b2; /* Японско-розовый */
             margin: 0;
             font-family: 'Press Start 2P', sans-serif;
             letter-spacing: 3px;
             text-shadow: 0 0 10px #ff66b2, 0 0 20px #ff66b2;
-            animation: rainbowGlow 5s infinite;
+            animation: rainbowGlow 5s infinite; /* Радужная анимация */
         }
 
         .subheader {
@@ -41,6 +43,7 @@
             text-shadow: 0 0 10px #ff66b2;
         }
 
+        /* Анимация радуги для заголовка */
         @keyframes rainbowGlow {
             0% { color: #ff66b2; text-shadow: 0 0 10px #ff66b2; }
             20% { color: #ffdd33; text-shadow: 0 0 10px #ffdd33; }
@@ -50,13 +53,14 @@
             100% { color: #ff66b2; text-shadow: 0 0 10px #ff66b2; }
         }
 
+        /* Секции контента */
         #about, #anime-section, #reviews {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 2rem;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.85); /* Полупрозрачный черный фон для секций */
             border-radius: 12px;
-            border: 2px solid #ff66b2;
+            border: 2px solid #ff66b2; /* Японско-розовая рамка */
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
         }
 
@@ -75,6 +79,7 @@
             color: #e0e0e0;
         }
 
+        /* Сетка аниме-карточек */
         #anime-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -83,7 +88,7 @@
         }
 
         .anime-card {
-            background: #1a1a1a;
+            background: #1a1a1a; /* Тёмный фон для карточки */
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
@@ -94,7 +99,7 @@
         .anime-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
-            border-color: #ff66b2;
+            border-color: #ff66b2; /* Розовый цвет при наведении */
         }
 
         .anime-card img {
@@ -117,13 +122,35 @@
             font-family: 'Roboto', sans-serif;
         }
 
+        /* Форма поиска и фильтрации */
+        #search-bar, #genre-filter {
+            margin-bottom: 1.5rem;
+            padding: 0.7rem;
+            border: 1px solid #ff66b2;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 400px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            box-sizing: border-box;
+        }
+
+        #search-bar::placeholder {
+            color: #cfcfcf;
+        }
+
+        #genre-filter {
+            margin-top: 1rem;
+        }
+
+        /* Стили для формы отзывов */
         #review-form {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        #review-form textarea {
+        #review-text {
             width: 100%;
             max-width: 600px;
             height: 100px;
@@ -134,37 +161,42 @@
             background-color: #1a1a1a;
             color: #ffffff;
             box-sizing: border-box;
-            resize: none;
         }
 
         #review-form button {
-            background-color: #ff66b2;
-            border: none;
-            color: #ffffff;
             padding: 0.7rem 1.5rem;
+            background-color: #ff66b2;
+            color: #ffffff;
+            border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 1rem;
             transition: background-color 0.3s ease;
         }
 
         #review-form button:hover {
-            background-color: #ff4da6;
+            background-color: #e55a8a;
+        }
+
+        /* Секция отзывов */
+        #reviews-list {
+            margin-top: 2rem;
         }
 
         .review {
-            background: #1a1a1a;
-            border-radius: 10px;
+            background: #333333;
+            border-radius: 8px;
             padding: 1rem;
             margin-bottom: 1rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
         }
 
         .review-author {
+            font-size: 0.9rem;
             color: #ff66b2;
-            font-weight: bold;
+            margin-top: 0.5rem;
         }
 
+        /* Футер */
         footer {
             background-color: #000;
             color: white;
@@ -180,9 +212,33 @@
             margin: 0;
         }
 
+        /* Кнопка входа */
+        .button {
+            display: inline-block;
+            padding: 0.7rem 2rem;
+            background-color: #7289da;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #5b6eae;
+        }
+
         @media (max-width: 768px) {
-            #anime-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            h1 {
+                font-size: 3rem;
+            }
+            .anime-card h3 {
+                font-size: 1.4rem;
+            }
+            #review-text {
+                height: 80px;
             }
         }
     </style>
@@ -194,6 +250,16 @@
         <a href="https://discord.com/api/oauth2/authorize?client_id=1285337134198296576&response_type=code&redirect_uri=https%3A%2F%2Fmasovskiy.github.io%2Framix&scope=identify+email" class="button">Войти через Discord</a>
     </header>
     <section id="anime-section">
+        <input type="text" id="search-bar" placeholder="Поиск по названию...">
+        <select id="genre-filter">
+            <option value="">Все жанры</option>
+            <option value="action">Action</option>
+            <option value="adventure">Adventure</option>
+            <option value="comedy">Comedy</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="horror">Horror</option>
+            <option value="supernatural">Supernatural</option>
+        </select>
         <h2>Популярные аниме</h2>
         <div id="anime-grid"></div>
     </section>
@@ -210,15 +276,6 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const animeGrid = document.getElementById('anime-grid');
-            const reviewList = document.getElementById('reviews-list');
-            const form = document.getElementById('review-form');
-            const reviewText = document.getElementById('review-text');
-            const urlParams = new URLSearchParams(window.location.search);
-            const code = urlParams.get('code');
-            const accessToken = localStorage.getItem('discord_access_token');
-
-            // Анимация карточек
             const animeData = [
                 {
                     "title": "Атака титанов",
@@ -294,18 +351,47 @@
                 }
             ];
 
-            animeData.forEach(anime => {
-                const card = document.createElement('div');
-                card.className = 'anime-card';
-                card.innerHTML = `
-                    <a href="${anime.link}" target="_blank">
-                        <img src="${anime.image}" alt="${anime.title}">
-                        <h3>${anime.title} (${anime.year})</h3>
-                        <p>${anime.description}</p>
-                    </a>
-                `;
-                animeGrid.appendChild(card);
-            });
+            const animeGrid = document.getElementById('anime-grid');
+            const reviewList = document.getElementById('reviews-list');
+            const form = document.getElementById('review-form');
+            const reviewText = document.getElementById('review-text');
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            const accessToken = localStorage.getItem('discord_access_token');
+
+            function displayAnime(animeData) {
+                animeGrid.innerHTML = '';
+                animeData.forEach(anime => {
+                    const card = document.createElement('div');
+                    card.className = 'anime-card';
+                    card.innerHTML = `
+                        <a href="${anime.link}" target="_blank">
+                            <img src="${anime.image}" alt="${anime.title}">
+                            <h3>${anime.title} (${anime.year})</h3>
+                            <p>${anime.description}</p>
+                        </a>
+                    `;
+                    animeGrid.appendChild(card);
+                });
+            }
+
+            function filterAnime() {
+                const searchBar = document.getElementById('search-bar').value.toLowerCase();
+                const genreFilter = document.getElementById('genre-filter').value;
+
+                const filteredAnime = animeData.filter(anime => {
+                    const matchesSearch = anime.title.toLowerCase().includes(searchBar);
+                    const matchesGenre = genreFilter === '' || anime.genres.includes(genreFilter);
+                    return matchesSearch && matchesGenre;
+                });
+
+                displayAnime(filteredAnime);
+            }
+
+            document.getElementById('search-bar').addEventListener('input', filterAnime);
+            document.getElementById('genre-filter').addEventListener('change', filterAnime);
+
+            displayAnime(animeData);
 
             async function getUsername() {
                 const token = localStorage.getItem('discord_access_token');
@@ -343,9 +429,9 @@
 
             form.addEventListener('submit', async (event) => {
                 event.preventDefault();
-                const reviewText = reviewText.value;
+                const reviewTextValue = reviewText.value;
 
-                if (reviewText.trim() === '') {
+                if (reviewTextValue.trim() === '') {
                     alert('Пожалуйста, напишите отзыв перед отправкой.');
                     return;
                 }
@@ -355,7 +441,7 @@
                 const review = document.createElement('div');
                 review.className = 'review';
                 review.innerHTML = `
-                    <p>${reviewText}</p>
+                    <p>${reviewTextValue}</p>
                     <p class="review-author">Автор: ${username}</p>
                 `;
 
