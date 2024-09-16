@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramix - Открытый аниме-хаб</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #ffffff;
+            background-image: url('https://wallpapercave.com/wp/wp13006911.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 3px solid #ff66b2;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            color: #ff66b2;
+            margin: 0;
+            font-family: 'Press Start 2P', sans-serif;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px #ff66b2, 0 0 20px #ff66b2;
+            animation: rainbowGlow 5s infinite;
+        }
+        
+        .subheader {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-top: 0.5rem;
+            text-shadow: 0 0 10px #ff66b2;
+        }
+        
+        @keyframes rainbowGlow {
+            0% { color: #ff66b2; text-shadow: 0 0 10px #ff66b2; }
+            20% { color: #ffdd33; text-shadow: 0 0 10px #ffdd33; }
+            40% { color: #33ffdd; text-shadow: 0 0 10px #33ffdd; }
+            60% { color: #dd33ff; text-shadow: 0 0 10px #dd33ff; }
+            80% { color: #ff4da6; text-shadow: 0 0 10px #ff4da6; }
+            100% { color: #ff66b2; text-shadow: 0 0 10px #ff66b2; }
+        }
+        
+        #about, #anime-section, #reviews {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 12px;
+            border: 2px solid #ff66b2;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: #ff66b2;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-family: 'Press Start 2P', sans-serif;
+            text-shadow: 0 0 10px #ff66b2;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+        
+        #anime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .anime-card {
+            background: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .anime-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
+            border-color: #ff66b2;
+        }
+        
+        .anime-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .anime-card img:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+        
+        .anime-card h3 {
+            text-align: center;
+            font-size: 1.6rem;
+            color: #ff66b2;
+            margin: 0.5rem 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        #review-form textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 1rem;
+            padding: 0.7rem;
+            border: 1px solid #ff66b2;
+            border-radius: 4px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            box-sizing: border-box;
+            resize: none;
+        }
+        
+        #review-form button {
+            background-color: #ff66b2;
+            border: none;
+            color: #ffffff;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        #review-form button:hover {
+            background-color: #ff4da6;
+        }
+        
+        .review {
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+        }
+        
+        .review-author {
+            color: #ff66b2;
+            font-weight: bold;
+        }
+        
+        footer {
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        footer p {
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            #anime-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+        <h1>Ramix - Открытый аниме-хаб!</h1>
+        <p class="subheader">Создан Романом Масовским и Артёмом Рамофым.</p>
+        <a href="https://discord.com/api/oauth2/authorize?client_id=1285337134198296576&response_type=code&redirect_uri=https%3A%2F%2Fmasovskiy.github.io%2Framix&scope=identify+email" class="button">Войти через Discord</a>
+    </header>
+
+    <section id="about">
+        <h2>О проекте</h2>
+        <p>
+            Ramix — это открытый хаб для просмотра и поиска аниме. 
+            Проект был создан с целью объединить любителей аниме и 
+            предоставить удобный интерфейс для поиска любимых аниме-сериалов.
+            Сайт позволяет вам быстро найти интересующее аниме по названию или жанру.
+        </p>
+    </section>
+
+    <section id="anime-section">
+        <h2>Популярные аниме</h2>
+        <input type="text" id="search-bar" placeholder="Поиск аниме...">
+        <select id="genre-filter">
+            <option value="all">Все жанры</option>
+            <option value="action">Экшен</option>
+            <option value="fantasy">Фэнтези</option>
+            <option value="adventure">Приключения</option>
+            <option value="comedy">Комедия</option>
+            <option value="horror">Ужасы</option>
+        </select>
+        <div id="anime-grid"></div>
+    </section>
+
+
+    <section id="developers">
+        <h2>О разработчиках</h2>
+        <p>
+            Этот проект был разработан с целью практики веб-программирования и создания полезного ресурса
+            для аниме-сообщества. Ramix был создан благодаря совместным усилиям двух энтузиастов:
+        </p>
+        <ul>
+            <li>Роман Масовский (unimas.maiers) — разработчик фронтенда и создатель проекта.</li>
+            <li>Артём Рамоф (ram_off47) — милый и добрый любитель аниме, соавтор проекта.</li>
+        </ul>
+        <p>
+            Мы использовали современный стек технологий, включая HTML, CSS и JavaScript, а также API для работы с аниме-базами данных. 
+            Проект разрабатывался с открытым исходным кодом и доступен на GitHub.
+        </p>
+    </section>
+
+    <footer>
+        <p>© 2024 Ramix — Все права защищены.</p>
+    </footer>
+        <p>© 2024 Ramix. Все права защищены.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('review-form');
+            const reviewList = document.getElementById('reviews-list');
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            const accessToken = localStorage.getItem('discord_access_token');
+
+            // Функция для получения имени пользователя
+            async function getUsername() {
+                try {
+                    const response = await fetch('https://discord.com/api/v10/users/@me', {
+                        headers: {
+                            'Authorization': `Bearer ${accessToken}`
+                        }
+                    });
+                    const data = await response.json();
+                    return data.username;
+                } catch (error) {
+                    console.error('Ошибка при получении имени пользователя:', error);
+                    return 'Аноним';
+                }
+            }
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const reviewText = document.getElementById('review-text').value;
+
+                if (reviewText.trim() === '') {
+                    alert('Пожалуйста, напишите отзыв перед отправкой.');
+                    return;
+                }
+
+                const username = await getUsername();
+
+                // Создаем новый элемент отзыва
+                const review = document.createElement('div');
+                review.className = 'review';
+                review.innerHTML = `
+                    <p>${reviewText}</p>
+                    <p class="review-author">Автор: ${username}</p>
+                `;
+
+                // Добавляем отзыв в список
+                reviewList.appendChild(review);
+
+                // Очищаем форму
+                form.reset();
+            });
+        });
+    </script>
+</body>
+</html>
