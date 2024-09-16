@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramix - Открытый аниме-хаб</title>
     <style>
-        /* Основные стили */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -51,28 +50,7 @@
             100% { color: #ff66b2; text-shadow: 0 0 10px #ff66b2; }
         }
 
-        #login-section {
-            text-align: center;
-            margin: 2rem 0;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            color: #ffffff;
-            background-color: #7289da;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .button:hover {
-            background-color: #5b6eae;
-            transform: scale(1.05);
-        }
-
-        #anime-section, #reviews {
+        #about, #anime-section, #developers {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 2rem;
@@ -136,6 +114,7 @@
             font-size: 1.6rem;
             color: #ff66b2;
             margin: 0.5rem 0;
+            font-family: 'Roboto', sans-serif;
         }
 
         #search-bar, #genre-filter {
@@ -154,39 +133,14 @@
             color: #cfcfcf;
         }
 
-        #reviews textarea {
-            width: 100%;
-            height: 100px;
-            margin-bottom: 1rem;
-            padding: 0.5rem;
-            border: 1px solid #ff66b2;
-            border-radius: 4px;
-            background-color: #1a1a1a;
-            color: #ffffff;
-            box-sizing: border-box;
+        #developers ul {
+            list-style-type: none;
+            padding-left: 0;
         }
 
-        #reviews button {
-            padding: 0.75rem 2rem;
-            border: none;
-            border-radius: 5px;
-            background-color: #ff66b2;
-            color: #ffffff;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        #reviews button:hover {
-            background-color: #ff4da6;
-        }
-
-        #reviews-list .review {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+        #developers li::before {
+            content: "• ";
+            color: #ff66b2;
         }
 
         footer {
@@ -203,241 +157,334 @@
         footer p {
             margin: 0;
         }
+
+        #review-form {
+            margin-top: 1.5rem;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ff66b2;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        #review-text {
+            width: 100%;
+            height: 100px;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ff66b2;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #ff66b2;
+            border: none;
+            color: #ffffff;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e64a8d;
+        }
+
+        .review {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ff66b2;
+            border-radius: 8px;
+        }
+
+        .review p {
+            margin: 0;
+        }
+
+        #login-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        #login-button {
+            background-color: #7289da;
+            border: none;
+            color: #ffffff;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        #login-button:hover {
+            background-color: #5b6eae;
+        }
+
+        #login-message {
+            display: none;
+            color: #ff66b2;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Ramix - Открытый аниме-хаб!</h1>
-        <p class="subheader">Этот хаб был написан Романом Масовским и Артёмом Рамофым.</p>
-        <p class="subheader">Система аутентификации с помощью Discord и система отзывов на базе LocalStorage.</p>
-        <div id="login-section">
-            <a href="https://discord.com/oauth2/authorize?client_id=1285337134198296576&response_type=code&redirect_uri=https%3A%2F%2Fmasovskiy.github.io%2Fr.one&scope=identify+email" class="button" id="login-button">Войти через Discord</a>
-        </div>
+        <p class="subheader">Аниме-хаб, созданный Романом Масовским и Артёмом Клейменовым</p>
     </header>
+    <section id="login-section">
+        <button id="login-button">Войти через Discord</button>
+        <div id="login-message">Войдите через Discord, чтобы оставить отзыв.</div>
+    </section>
+    <section id="about">
+        <h2>О нас</h2>
+        <p>Добро пожаловать на Ramix - аниме-хаб, созданный для фанатов аниме по всему миру! Здесь вы можете найти популярные аниме, прочитать отзывы и оставить свои собственные.</p>
+    </section>
     <section id="anime-section">
-        <input type="text" id="search-bar" placeholder="Поиск по названию...">
+        <input type="text" id="search-bar" placeholder="Поиск аниме...">
         <select id="genre-filter">
             <option value="">Все жанры</option>
-            <option value="action">Action</option>
-            <option value="adventure">Adventure</option>
-            <option value="comedy">Comedy</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="horror">Horror</option>
-            <option value="supernatural">Supernatural</option>
+            <option value="action">Экшн</option>
+            <option value="adventure">Приключения</option>
+            <option value="comedy">Комедия</option>
+            <option value="fantasy">Фэнтези</option>
+            <option value="horror">Ужасы</option>
+            <option value="supernatural">Сверхъестественное</option>
         </select>
-        <h2>Популярные аниме</h2>
-        <div id="anime-grid"></div>
+        <div id="anime-grid">
+            <!-- Аниме карточки будут добавлены динамически -->
+        </div>
     </section>
-    <section id="reviews">
-        <h2>Оставьте отзыв</h2>
-        <form id="review-form">
-            <textarea id="review-text" placeholder="Ваш отзыв..."></textarea>
-            <button type="submit">Отправить отзыв</button>
-        </form>
-        <h2>Отзывы</h2>
-        <div id="reviews-list"></div>
+    <section id="review-form">
+        <h2>Оставьте свой отзыв</h2>
+        <textarea id="review-text" placeholder="Ваш отзыв..."></textarea>
+        <button id="submit-review">Отправить отзыв</button>
+    </section>
+    <section id="developers">
+        <h2>Разработчики</h2>
+        <ul>
+            <li>Роман Масовский</li>
+            <li>Артём Рамоф</li>
+        </ul>
     </section>
     <footer>
         <p>&copy; 2024 Ramix. Все права защищены.</p>
     </footer>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const reviewForm = document.getElementById('review-form');
-            const reviewText = document.getElementById('review-text');
-            const reviewList = document.getElementById('reviews-list');
-            const animeGrid = document.getElementById('anime-grid');
-            const searchBar = document.getElementById('search-bar');
-            const genreFilter = document.getElementById('genre-filter');
-            const loginSection = document.getElementById('login-section');
-            const loginButton = document.getElementById('login-button');
+        const clientId = '1285337134198296576'; // Замените на ваш client_id
+        const redirectUri = encodeURIComponent('https://masovskiy.github.io/r.one');
+        const scope = 'identify+email';
 
-            // Массив аниме
-            const animeData = [
-                {
-                    "title": "Атака титанов",
-                    "description": "Человечество против гигантских титанов.",
-                    "year": 2013,
-                    "genres": ["action", "fantasy"],
-                    "image": "https://cdn.myanimelist.net/images/anime/10/47347.jpg",
-                    "link": "https://myanimelist.net/anime/16498/Shingeki_no_Kyojin"
-                },
-                {
-                    "title": "Наруто",
-                    "description": "История юного ниндзя, стремящегося стать Хокаге.",
-                    "year": 2002,
-                    "genres": ["action", "adventure"],
-                    "image": "https://cdn.myanimelist.net/images/anime/13/17405.jpg",
-                    "link": "https://myanimelist.net/anime/20/Naruto"
-                },
-                {
-                    "title": "Моя геройская академия",
-                    "description": "Мир, где люди рождаются с суперсилами.",
-                    "year": 2016,
-                    "genres": ["action", "comedy"],
-                    "image": "https://cdn.myanimelist.net/images/anime/10/78745.jpg",
-                    "link": "https://myanimelist.net/anime/31964/Boku_no_Hero_Academia"
-                },
-                {
-                    "title": "One Piece",
-                    "description": "Приключения пиратов в поисках легендарного сокровища.",
-                    "year": 1999,
-                    "genres": ["action", "adventure", "fantasy"],
-                    "image": "https://cdn.myanimelist.net/images/anime/6/73245.jpg",
-                    "link": "https://myanimelist.net/anime/21/One_Piece"
-                },
-                {
-                    "title": "Демон-убийца: Клинок, рассекающий демонов",
-                    "description": "Мальчик ищет способ исцелить свою сестру и отомстить демонам.",
-                    "year": 2019,
-                    "genres": ["action", "fantasy"],
-                    "image": "https://cdn.myanimelist.net/images/anime/1286/99889.jpg",
-                    "link": "https://myanimelist.net/anime/38000/Kimetsu_no_Yaiba"
-                },
-                {
-                    "title": "Семь смертных грехов",
-                    "description": "Легендарные рыцари, обвинённые в заговоре, должны доказать свою невиновность.",
-                    "year": 2014,
-                    "genres": ["action", "adventure", "fantasy"],
-                    "image": "https://cdn.myanimelist.net/images/anime/8/65409.jpg",
-                    "link": "https://myanimelist.net/anime/23755/Nanatsu_no_Taizai"
-                },
-                {
-                    "title": "Токийский гуль",
-                    "description": "Человек превращается в монстра после нападения гулей.",
-                    "year": 2014,
-                    "genres": ["action", "horror", "supernatural"],
-                    "image": "https://cdn.myanimelist.net/images/anime/5/64449.jpg",
-                    "link": "https://myanimelist.net/anime/22319/Tokyo_Ghoul"
-                },
-                {
-                    "title": "Судьба: Начало",
-                    "description": "Маги борются за право использовать священный Грааль.",
-                    "year": 2011,
-                    "genres": ["action", "fantasy", "supernatural"],
-                    "image": "https://cdn.myanimelist.net/images/anime/7/73274.jpg",
-                    "link": "https://myanimelist.net/anime/10087/Fate_Zero"
-                },
-                {
-                    "title": "Sword Art Online",
-                    "description": "Игроки MMORPG попадают в ловушку виртуального мира.",
-                    "year": 2012,
-                    "genres": ["action", "adventure", "fantasy"],
-                    "image": "https://cdn.myanimelist.net/images/anime/11/39717.jpg",
-                    "link": "https://myanimelist.net/anime/11757/Sword_Art_Online"
-                }
-            ];
+        const loginButton = document.getElementById('login-button');
+        const loginMessage = document.getElementById('login-message');
+        const reviewForm = document.getElementById('review-form');
+        const submitReviewButton = document.getElementById('submit-review');
+        const reviewText = document.getElementById('review-text');
+        const animeGrid = document.getElementById('anime-grid');
 
-            // Функция для отображения аниме
-            function displayAnime(animeList) {
-                animeGrid.innerHTML = '';
-                animeList.forEach(anime => {
-                    const animeCard = document.createElement('div');
-                    animeCard.classList.add('anime-card');
-                    animeCard.innerHTML = `
-                        <a href="${anime.link}" target="_blank">
-                            <img src="${anime.image}" alt="${anime.title}">
-                            <h3>${anime.title} (${anime.year})</h3>
-                            <p>${anime.description}</p>
-                        </a>
-                    `;
-                    animeGrid.appendChild(animeCard);
-                });
-            }
+        // Авторизация через Discord
+        loginButton.addEventListener('click', () => {
+            window.location.href = `https://discord.com/oauth2/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scope}`;
+        });
 
-            // Фильтрация аниме по жанру и поиску
-            function filterAnime() {
-                const searchTerm = searchBar.value.toLowerCase();
-                const selectedGenre = genreFilter.value;
-                const filteredAnime = animeData.filter(anime => {
-                    const matchesSearch = anime.title.toLowerCase().includes(searchTerm);
-                    const matchesGenre = selectedGenre ? anime.genres.includes(selectedGenre) : true;
-                    return matchesSearch && matchesGenre;
-                });
-                displayAnime(filteredAnime);
-            }
-
-            // Сохранение и отображение отзывов
-            function loadReviews() {
-                const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-                reviewList.innerHTML = '';
-                reviews.forEach(review => {
-                    const reviewElement = document.createElement('div');
-                    reviewElement.classList.add('review');
-                    reviewElement.innerHTML = `<p><strong>${review.username}</strong>: ${review.text}</p>`;
-                    reviewList.prepend(reviewElement);
-                });
-            }
-
-            function saveReview(username, text) {
-                const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-                reviews.push({ username, text });
-                localStorage.setItem('reviews', JSON.stringify(reviews));
-            }
-
-            reviewForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const username = localStorage.getItem('discord_username');
-                const reviewTextValue = reviewText.value.trim();
-                if (username && reviewTextValue) {
-                    const review = document.createElement('div');
-                    review.classList.add('review');
-                    review.innerHTML = `<p><strong>${username}</strong>: ${reviewTextValue}</p>`;
-                    reviewList.prepend(review);
-                    saveReview(username, reviewTextValue);
-                    reviewText.value = ''; // Очистить поле отзыва
-                } else {
-                    alert('Пожалуйста, войдите через Discord и напишите отзыв.');
-                }
-            });
-
-            searchBar.addEventListener('input', filterAnime);
-            genreFilter.addEventListener('change', filterAnime);
-
-            // Инициализация
-            displayAnime(animeData);
-            loadReviews();
-
-            // Проверка авторизации через Discord
+        // После успешной авторизации
+        window.onload = async () => {
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('code');
+
             if (code) {
-                fetch('https://discord.com/api/oauth2/token', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: new URLSearchParams({
-                        client_id: '1285337134198296576',
-                        client_secret: 'YOUR_DISCORD_CLIENT_SECRET',
-                        grant_type: 'authorization_code',
-                        code: code,
-                        redirect_uri: 'https://masovskiy.github.io/ramix',
-                        scope: 'identify email',
-                    }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.access_token) {
-                        fetch('https://discord.com/api/v10/users/@me', {
-                            headers: {
-                                'Authorization': `Bearer ${data.access_token}`
-                            }
-                        })
-                        .then(response => response.json())
-                        .then(userData => {
-                            localStorage.setItem('discord_username', userData.username);
-                            loginSection.style.display = 'none';
-                        })
-                        .catch(error => console.error('Ошибка получения данных пользователя:', error));
-                    }
-                })
-                .catch(error => console.error('Ошибка получения токена:', error));
-            } else {
-                const storedUsername = localStorage.getItem('discord_username');
-                if (storedUsername) {
-                    loginSection.style.display = 'none';
+                try {
+                    const tokenResponse = await fetch('https://discord.com/api/oauth2/token', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: new URLSearchParams({
+                            'client_id': clientId,
+                            'client_secret': 'GUbfwT75tetKKJvqqcIqX5wOCuJA9xHY', // Замените на ваш client_secret
+                            'grant_type': 'authorization_code',
+                            'code': code,
+                            'redirect_uri': redirectUri,
+                            'scope': 'identify+email',
+                        }),
+                    });
+
+                    const tokenData = await tokenResponse.json();
+                    const accessToken = tokenData.access_token;
+
+                    // Получение информации о пользователе
+                    const userResponse = await fetch('https://discord.com/api/users/@me', {
+                        headers: {
+                            'Authorization': `Bearer ${accessToken}`,
+                        },
+                    });
+
+                    const userData = await userResponse.json();
+                    const username = userData.username;
+
+                    // Обновление UI
+                    loginButton.style.display = 'none';
+                    loginMessage.style.display = 'none';
+                    reviewForm.style.display = 'block';
+
+                    submitReviewButton.addEventListener('click', () => {
+                        const review = reviewText.value;
+                        if (review) {
+                            const reviewElement = document.createElement('div');
+                            reviewElement.classList.add('review');
+                            reviewElement.innerHTML = `<strong>${username}</strong>: <p>${review}</p>`;
+                            animeGrid.appendChild(reviewElement);
+                            reviewText.value = '';
+                        }
+                    });
+                } catch (error) {
+                    console.error('Ошибка авторизации:', error);
                 }
             }
+        };
+
+        // Пример аниме данных (замените на ваш JSON-файл)
+        const animeData = [
+            {
+                "title": "Атака титанов",
+                "description": "Человечество против гигантских титанов.",
+                "year": 2013,
+                "genres": ["action", "fantasy"],
+                "image": "https://cdn.myanimelist.net/images/anime/10/47347.jpg",
+                "link": "https://myanimelist.net/anime/16498/Shingeki_no_Kyojin"
+            },
+            {
+                "title": "Наруто",
+                "description": "История юного ниндзя, стремящегося стать Хокаге.",
+                "year": 2002,
+                "genres": ["action", "adventure"],
+                "image": "https://cdn.myanimelist.net/images/anime/13/17405.jpg",
+                "link": "https://myanimelist.net/anime/20/Naruto"
+            },
+            {
+                "title": "Моя геройская академия",
+                "description": "Мир, где люди рождаются с суперсилами.",
+                "year": 2016,
+                "genres": ["action", "comedy"],
+                "image": "https://cdn.myanimelist.net/images/anime/10/78745.jpg",
+                "link": "https://myanimelist.net/anime/31964/Boku_no_Hero_Academia"
+            },
+            {
+                "title": "One Piece",
+                "description": "Приключения пиратов в поисках легендарного сокровища.",
+                "year": 1999,
+                "genres": ["action", "adventure", "fantasy"],
+                "image": "https://cdn.myanimelist.net/images/anime/6/73245.jpg",
+                "link": "https://myanimelist.net/anime/21/One_Piece"
+            },
+            {
+                "title": "Демон-убийца: Клинок, рассекающий демонов",
+                "description": "Мальчик ищет способ исцелить свою сестру и отомстить демонам.",
+                "year": 2019,
+                "genres": ["action", "fantasy"],
+                "image": "https://cdn.myanimelist.net/images/anime/1286/99889.jpg",
+                "link": "https://myanimelist.net/anime/38000/Kimetsu_no_Yaiba"
+            },
+            {
+                "title": "Семь смертных грехов",
+                "description": "Легендарные рыцари, обвинённые в заговоре, должны доказать свою невиновность.",
+                "year": 2014,
+                "genres": ["action", "adventure", "fantasy"],
+                "image": "https://cdn.myanimelist.net/images/anime/8/65409.jpg",
+                "link": "https://myanimelist.net/anime/23755/Nanatsu_no_Taizai"
+            },
+            {
+                "title": "Токийский гуль",
+                "description": "Человек превращается в монстра после нападения гулей.",
+                "year": 2014,
+                "genres": ["action", "horror", "supernatural"],
+                "image": "https://cdn.myanimelist.net/images/anime/5/64449.jpg",
+                "link": "https://myanimelist.net/anime/22319/Tokyo_Ghoul"
+            },
+            {
+                "title": "Судьба: Начало",
+                "description": "Маги борются за право использовать священный Грааль.",
+                "year": 2011,
+                "genres": ["action", "fantasy", "supernatural"],
+                "image": "https://cdn.myanimelist.net/images/anime/7/73274.jpg",
+                "link": "https://myanimelist.net/anime/10087/Fate_Zero"
+            },
+            {
+                "title": "Sword Art Online",
+                "description": "Игроки MMORPG попадают в ловушку виртуального мира.",
+                "year": 2012,
+                "genres": ["action", "adventure", "fantasy"],
+                "image": "https://cdn.myanimelist.net/images/anime/11/39717.jpg",
+                "link": "https://myanimelist.net/anime/11757/Sword_Art_Online"
+            }
+        ];
+
+        // Функция для отображения аниме карточек
+        function displayAnime() {
+            animeGrid.innerHTML = ''; // Очистка предыдущих карточек
+            animeData.forEach(anime => {
+                const card = document.createElement('div');
+                card.className = 'anime-card';
+                card.innerHTML = `
+                    <a href="${anime.link}" target="_blank">
+                        <img src="${anime.image}" alt="${anime.title}">
+                        <h3>${anime.title}</h3>
+                        <p>${anime.description}</p>
+                        <p>Год: ${anime.year}</p>
+                    </a>
+                `;
+                animeGrid.appendChild(card);
+            });
+        }
+
+        // Функция для фильтрации аниме по жанру
+        function filterAnime() {
+            const selectedGenre = document.getElementById('genre-filter').value;
+            const filteredAnime = animeData.filter(anime => {
+                return !selectedGenre || anime.genres.includes(selectedGenre);
+            });
+            displayFilteredAnime(filteredAnime);
+        }
+
+        // Функция для отображения отфильтрованного аниме
+        function displayFilteredAnime(anime) {
+            animeGrid.innerHTML = '';
+            anime.forEach(anime => {
+                const card = document.createElement('div');
+                card.className = 'anime-card';
+                card.innerHTML = `
+                    <a href="${anime.link}" target="_blank">
+                        <img src="${anime.image}" alt="${anime.title}">
+                        <h3>${anime.title}</h3>
+                        <p>${anime.description}</p>
+                        <p>Год: ${anime.year}</p>
+                    </a>
+                `;
+                animeGrid.appendChild(card);
+            });
+        }
+
+        // Инициализация
+        displayAnime();
+
+        // Обработчик изменения фильтра жанров
+        document.getElementById('genre-filter').addEventListener('change', filterAnime);
+
+        // Обработчик поиска аниме
+        document.getElementById('search-bar').addEventListener('input', event => {
+            const searchTerm = event.target.value.toLowerCase();
+            const filteredAnime = animeData.filter(anime => 
+                anime.title.toLowerCase().includes(searchTerm) ||
+                anime.description.toLowerCase().includes(searchTerm)
+            );
+            displayFilteredAnime(filteredAnime);
         });
     </script>
 </body>
